@@ -18,7 +18,7 @@ const SignUpForm = ({toggle,closeModel}) => {
             const body = {
                 name,email,password
             }
-            const response = await axios.post('http://localhost:8000/api/admin/user-register',body,{
+            const response = await axios.post('https://fathomless-shelf-22509.herokuapp.com/api/admin/user-register',body,{
                 headers:{
                     'Content-type':'application/json',
                     'Accept':'application/json'
