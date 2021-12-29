@@ -38,8 +38,8 @@ const SignUpForm = ({toggle,closeModel}) => {
             <div className='signUp-container'>
                 <div className='signUp-form'>
                     <h1>Sign Up</h1>
-                    <p style={{color:"red",textAlign:"center",marginBottom:"1rem"}}>{message}</p>
-                     <form onSubmit={handleSubmit}>
+                    {message&& <p style={{color:"red",textAlign:"center",marginBottom:"1rem"}}>{message}</p>}
+                     <form method="post" onSubmit={handleSubmit}>
                         <input 
                             type="text" 
                             onChange={(e)=>setName(e.target.value)} 
@@ -60,7 +60,13 @@ const SignUpForm = ({toggle,closeModel}) => {
                         />
                         <input type="submit" value="Sign Up"/>
                      </form>
-                     <div onClick={closeModel} className='signUp-form-close'>
+                     <div 
+                     onClick={()=>{
+                        closeModel();
+                        setMessage("");
+                     }} 
+                     className='signUp-form-close'
+                     >
                          <FontAwesomeIcon icon={faTimes}/>
                      </div>
                 </div>
