@@ -1,0 +1,85 @@
+.code-challenge{
+    width:70%;
+    margin: auto;
+    padding:2rem;
+}
+
+.code-challenge-title-info{
+    width:70%;
+    margin:auto;
+}
+
+.code-challenge-title-info p{
+   text-align: center;
+   margin:0.5rem;
+}
+
+.code-challenge-title{
+    text-align: center;
+    width:fit-content;
+    margin: auto;
+    font-size: 2.5rem;
+    padding:0.5rem 0;
+    position: relative;
+}
+.code-challenge-title::before{
+    content:"";
+    position: absolute;
+    bottom: 0;
+    width:20%;
+    height: 100%;
+    border-bottom: 0.1rem solid #741EF7;
+    left:50%;
+    transform: translateX(-50%);
+}
+
+.code-challenge .code-challenge-details{
+    display: flex;
+    flex-wrap: wrap;
+    margin:2rem
+}
+
+
+
+.code-challenge .code-challenge-details .code-challenge-details-info{
+    text-align: center;
+    flex: 1 0 30%;
+    padding:2rem;
+}
+.code-challenge .code-challenge-details .code-challenge-details-info h3{
+    margin:0.75rem;
+}
+
+.code-challenge .code-challenge-details .code-challenge-details-info .code-challenge-details-img{
+   color: #969696;
+   font-weight: 100;
+}
+
+@media (max-width:998px) {
+    .code-challenge .code-challenge-details .code-challenge-details-info {
+        flex: 1 0 40%;
+    }
+}
+
+@media (max-width:954px) {
+
+    .code-challenge .code-challenge-details .code-challenge-details-info {
+        flex: 1 0 60%;
+    }
+}
+
+@media (max-width: 500px) {
+    .code-challenge-title-info {
+        width: 100%;
+    }
+
+    .code-challenge .code-challenge-details {
+        display: block;
+    }
+
+    .code-challenge .code-challenge-details .code-challenge-details-info {
+        flex: 1;
+        margin:2rem 0;
+        padding: 0;
+    }
+}

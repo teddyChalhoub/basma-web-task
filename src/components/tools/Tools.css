@@ -1,0 +1,128 @@
+.tools_container{
+    background-color: #f8f4ff;
+    padding: 4rem 0;
+}
+.tools{
+    width:80%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.tools .tools_img{
+    width:40%;
+}
+
+.tools .tools_img img{
+    margin: 0 auto;
+    display: inherit;
+}
+
+.tools .tools-details{
+    margin:2rem 0;
+    width:40%;
+}
+
+.tools .tools-details h1{
+    width:100%;
+    font-size: 2.5rem;
+}
+
+.tools .tools-details .tools-details-info{
+    margin: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.tools .tools-details .tools-details-info p{
+    font-size: 0.75rem;
+    margin: 0 1rem;
+    width:80%;
+}
+
+.tools .tools-details .tools-details-icons{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 35%;
+    margin: 1.5rem 0.75rem;
+}
+
+.tools .tools-details .tools-details-icons .tools-details-icon{
+    font-size: 1.2rem;
+    background-color: #fff;
+    padding: 0.5rem 0.75rem;
+    border-radius: 2px;
+    box-shadow: -5px 5px 8px #d8bdff;
+    color:#741EF7 ;
+}
+
+@media (max-width : 1323px) {
+    .tools .tools-details .tools-details-icons{
+        width:40%;
+    }
+    
+}
+
+@media (max-width : 1140px) {
+
+    .tools .tools-details .tools-details-icons{
+        width:45%;
+    } 
+}
+
+
+@media (max-width : 1048px) {
+
+    .tools .tools-details .tools-details-icons{
+        width:50%;
+    } 
+}
+
+
+@media (max-width:954px) {
+
+    .tools {
+        flex-direction: row;
+    }
+
+    .tools .tools_img {
+        align-self: center;
+        max-width: 20%;
+        margin: 2.5rem;
+    }
+
+    .tools .tools_img img {
+        display: inherit;
+        width: 100%;
+    }
+
+    .tools .tools-details {
+        min-width: 65%;
+    }
+    
+}
+
+@media (max-width:706px) {
+    .tools .tools-details {
+        min-width: 100%;
+        text-align: center;
+    }
+
+    .tools .tools-details .tools-details-info p,    
+    .tools .tools-details .tools-details-icons {
+        margin: auto;
+    }
+    .tools .tools-details .tools-details-icons{
+        width:40%;
+    } 
+}
+
+@media (max-width:500px) {
+
+    .tools .tools-details .tools-details-icons{
+        width:55%;
+    } 
+}

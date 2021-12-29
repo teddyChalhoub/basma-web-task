@@ -1,0 +1,111 @@
+.membership-container{
+    background-color: #f8f4ff;
+    padding: 4rem 0;
+}
+
+.membership-container > p{
+    text-align: center;
+}
+
+.membership-container > p a{
+    color: black;
+}
+
+.membership-details-message{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.membership-title-info{
+    width:50%;
+    margin:auto;
+}
+
+.membership-title-info p{
+   text-align: center;
+   margin:0.5rem;
+}
+
+.membership-title{
+    text-align: center;
+    width:fit-content;
+    margin: auto;
+    font-size: 2.5rem;
+    padding:0.75rem 0;
+    position: relative;
+}
+.membership-title::before{
+    content:"";
+    position: absolute;
+    bottom: 0;
+    width:20%;
+    height: 100%;
+    border-bottom: 0.1rem solid #741EF7;
+    left:50%;
+    transform: translateX(-50%);
+}
+
+.membership-container .membership-details{
+    text-align: center;
+    width: fit-content;
+    background-color: #fff;
+    padding: 2rem;
+    border-radius:5px ;
+    position: relative;
+    margin: 4rem 1rem;
+
+}
+
+.membership-details > h1:first-of-type{
+    letter-spacing: 2px;
+    margin: 0.5rem;
+    text-transform: uppercase;
+}
+
+.membership-details > h1:nth-last-of-type(1){
+   color: #741EF7;
+}
+
+.membership-container .membership-details .price{
+    font-size: 2.5rem;
+    margin:  1rem 0;
+    
+}
+
+.membership-container .membership-details .membership-details-img {
+    width:5rem;
+    margin: auto;
+}
+
+.membership-container .membership-details .membership-details-img img{
+    width:100%;
+}
+
+.membership-container .membership-details .membership-details-info{
+    margin: 1rem;
+}
+
+
+
+.membership-container .membership-details .membership-details-info p{
+    border-top: 0.1rem solid #d3d3d3;
+    padding: 1rem;
+}
+
+.membership-container .membership-details .membership-details-info p:last-child{
+    border-bottom: 0.1rem solid #d3d3d3;
+}
+
+.membership-container .membership-details a{
+    display: inline-block;
+    position: absolute;
+    top:100%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    background-color: #741EF7;
+    padding: 0.75rem 1.5rem;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}

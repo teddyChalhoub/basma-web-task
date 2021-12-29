@@ -1,0 +1,80 @@
+.code-challenge2-container{
+    background-color:#741EF7;
+    color: #fff;
+    padding: 4rem 2rem;
+}
+
+.code-challenge2-title-info{
+    width:50%;
+    margin:auto;
+}
+
+.code-challenge2-title-info p{
+   text-align: center;
+   margin:0.5rem;
+}
+
+.code-challenge2-title{
+    text-align: center;
+    width:fit-content;
+    margin: auto;
+    font-size: 2.5rem;
+    padding:0.5rem 0;
+    position: relative;
+}
+
+.code-challenge2-container .code-challenge2-details{
+    display: flex;
+    flex-wrap: wrap;
+    width:70%;
+    margin: 2rem auto;
+}
+
+.code-challenge2-container .code-challenge2-details .code-challenge2-details-info{
+    text-align: center;
+    flex: 1 0 30%;
+    padding:2rem;
+}
+.code-challenge2-container .code-challenge2-details .code-challenge2-details-info h3{
+    margin:0.75rem;
+}
+
+.code-challenge2-container .code-challenge2-details 
+.code-challenge2-details-info .code-challenge2-details-img{
+  width:3.5rem;
+  margin: auto;
+}
+
+
+.code-challenge2-container .code-challenge2-details 
+.code-challenge2-details-info .code-challenge2-details-img img{
+  width: 100%;
+}
+
+.code-challenge2-container .code-challenge2-details 
+.code-challenge2-details-info {
+    position: relative;
+}
+
+.code-challenge2-container .code-challenge2-details 
+.code-challenge2-details-info .right-arrow{
+    position: absolute;
+    top:40%;
+    right:0;
+    font-size: 2rem;
+}
+
+@media (max-width:954px) {
+
+    .code-challenge2-container .code-challenge2-details {
+        flex-direction: column;
+    }
+
+    .code-challenge2-container .code-challenge2-details .code-challenge2-details-info .right-arrow {
+
+        top: 90%;
+        left: 0;
+        transform: rotate(90deg);
+    }
+    
+}
