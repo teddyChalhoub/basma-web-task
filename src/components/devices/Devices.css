@@ -61,4 +61,19 @@
     .devices-container .devices-container-details {
         width: 80%;
     }
+
+    .devices-container .devices-container-details >  h1:first-of-type {
+        font-size: 1.5rem;
+    }
+
+    .devices-container .devices-container-details > p:first-of-type {
+        font-size: 0.75rem;
+    }
+    .devices-container .devices-container-img .device-kind {
+        width: 5rem;
+    }
+
+    .devices-container > p {
+       font-size: 0.75rem;
+    }
 }

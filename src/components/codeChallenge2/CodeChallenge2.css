@@ -64,6 +64,17 @@
     font-size: 2rem;
 }
 
+@media (max-width:998px) {
+    .code-challenge2-container{
+        font-size: 0.75rem;
+    }
+
+
+    .code-challenge2-title {
+        font-size: 1.75rem;
+    }
+}
+
 @media (max-width:954px) {
 
     .code-challenge2-container .code-challenge2-details {

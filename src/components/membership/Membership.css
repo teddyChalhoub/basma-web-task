@@ -9,6 +9,7 @@
 
 .membership-container > p a{
     color: black;
+
 }
 
 .membership-details-message{
@@ -108,4 +109,15 @@
     color: #fff;
     text-decoration: none;
     border-radius: 5px;
+    cursor: pointer;
+}
+
+@media (max-width:998px) {
+
+    .membership-container{
+        font-size: 0.75rem;
+    }
+    .membership-title {
+        font-size: 1.75rem;
+    }
 }

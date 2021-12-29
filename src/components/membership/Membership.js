@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BikeImage, MotorBikeImage } from '../../assets/images';
+import SignUpForm from '../SignUpForm/SignUpForm';
 import "./Membership.css";
 
 const Membership = () => {
+    const [toggle, setToggle] = useState(false);
+
+    const closeModel = ()=>{
+        setToggle(!toggle);
+    }
     return (
        <section className='membership-container'>
             <div className='membership-title-info'>
@@ -27,7 +33,7 @@ const Membership = () => {
                             <p>24/7 Tech Support</p>
                             <p>Daily Backups</p>
                         </div>
-                        <a>SignUp</a>
+                        <a onClick={closeModel}>SignUp</a>
                 </div>
 
                 <div className='membership-details'>
@@ -45,10 +51,11 @@ const Membership = () => {
                             <p>Unlimited Email</p>
                             <p>Daily Backups</p>
                         </div>
-                        <a>SignUp</a>
+                        <a onClick={closeModel}>SignUp</a>
                 </div>
             </div>
             <p>Not sure what to choose? <a href="#">Contacts Us</a></p>
+            <SignUpForm toggle={toggle}  closeModel={closeModel}/>
        </section>
     )
 }

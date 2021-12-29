@@ -59,6 +59,9 @@
     .code-challenge .code-challenge-details .code-challenge-details-info {
         flex: 1 0 40%;
     }
+    .code-challenge-title {
+        font-size: 1.75rem;
+    }
 }
 
 @media (max-width:954px) {
@@ -69,6 +72,10 @@
 }
 
 @media (max-width: 500px) {
+    .code-challenge {
+        width: 100%;
+        font-size:0.75rem;
+    }
     .code-challenge-title-info {
         width: 100%;
     }
@@ -78,7 +85,7 @@
     }
 
     .code-challenge .code-challenge-details .code-challenge-details-info {
-        flex: 1;
+        /* flex: 1; */
         margin:2rem 0;
         padding: 0;
     }

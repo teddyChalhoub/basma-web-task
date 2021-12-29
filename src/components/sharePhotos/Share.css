@@ -76,6 +76,15 @@
     }
 }
 
+@media (max-width:998px) {
+    .share{
+        font-size: 0.75rem;
+    }
+    .share .share-details h1 {
+        font-size: 1.75rem;
+    }
+}
+
 @media (max-width:954px) {
 
     .share {

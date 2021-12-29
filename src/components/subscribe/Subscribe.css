@@ -46,7 +46,18 @@
 
 @media (max-width:954px) {
 
+    .subscribe-container{
+        padding: 1rem;
+    }
     .subscribe-container .subscribe-info {
-        width: 80%;
+        width: 100%;
+    }
+
+    .subscribe-container .subscribe-info > h1 {
+        font-size: 1.75rem;
+    }
+
+    .subscribe-container .subscribe-info p {
+        font-size: 0.75rem;
     }
 }

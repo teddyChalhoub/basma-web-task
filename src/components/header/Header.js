@@ -1,11 +1,19 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
+import React, { useState } from 'react';
 import { HeaderImage } from '../../assets/images';
 import { faChevronUp,faBars } from '@fortawesome/free-solid-svg-icons';
 import "./Header.css"
+import NavbarBurgerMenu from '../navBarBurger/NavbarBurgerMenu';
 
 
 const Header = () => {
+
+    const [toggle, setToggle] = useState(false);
+
+    const closeModel = ()=>{
+        setToggle(!toggle);
+    }
+
     return (
         <header>
             <nav id="nav_bar">
@@ -17,9 +25,12 @@ const Header = () => {
                     <li><a href='#'>Pricing</a></li>
                     <li><a href='#'>Contact</a></li>
                 </ul>
-                <div className='burger-icon-media'>
+                <a 
+                onClick={()=>setToggle(true)} 
+                className='burger-icon-media'
+                href="#">
                     <FontAwesomeIcon icon={faBars}/>
-                </div>
+                </a>
             </nav>
             <div className='header'>
                 <div className='header-title'>
@@ -37,9 +48,11 @@ const Header = () => {
                     </div>
                 </div>
             </div>
+            
             <a className='to-top' href="#nav_bar">
                 <FontAwesomeIcon icon={faChevronUp}/>
             </a>
+            <NavbarBurgerMenu toggle={toggle} closeModel={closeModel}/>
         </header>
     )
 }

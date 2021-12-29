@@ -1,0 +1,66 @@
+.burger-nav{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #741EF7;
+}
+
+.burger-nav .burger-nav-links{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content:center;
+    list-style-type: none;
+    text-decoration: none;
+    height: 100vh;
+}
+
+.burger-nav .burger-nav-links ul{
+    list-style-type: none;
+    text-align: center;
+}
+
+.burger-nav .burger-nav-links ul li a{
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.75rem;
+}
+
+.burger-nav .burger-nav-links ul li{
+    margin: 1.5rem 0;
+}
+
+.burger-nav .burger-nav-links ul li:hover{
+    /* background-color: white; */
+    color:#741EF7;
+    position: relative;
+    padding:0.5rem 1.5rem;
+}
+
+.burger-nav .burger-nav-links ul li:hover a{
+    color:#741EF7;
+}
+
+.burger-nav .burger-nav-links ul li:hover::before{
+    content: "";
+    position: absolute;
+    width:100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-color: white;
+    color:#741EF7;
+    z-index: -1;
+}
+
+.burger-nav .burger-nav-close{
+    position: absolute;
+    color: #fff;
+    top:0;
+    right:0;
+    font-size: 1.5rem;
+    margin: 0.5rem 1rem;
+}
