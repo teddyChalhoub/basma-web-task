@@ -269,9 +269,9 @@ export const contactDataEn = {
 export const signUpFormDataEn = {
   title: "Sign Up",
   inputs: [
-    { placeholder: "Enter your full name", name: "name" },
-    { placeholder: "Enter your email", name: "email" },
-    { placeholder: "Enter your password", name: "password" },
+    { placeholder: "Enter your full name", name: "name", type: "text" },
+    { placeholder: "Enter your email", name: "email", type: "text" },
+    { placeholder: "Enter your password", name: "password", type: "password" },
   ],
   btnText: "Sign Up",
 };

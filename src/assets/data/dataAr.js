@@ -259,9 +259,9 @@ export const contactDataAr = {
 export const signUpFormDataAr = {
   title: "اشترك",
   inputs: [
-    { placeholder: "أدخل إسمك الكامل", name: "name" },
-    { placeholder: "أدخل بريدك الإلكتروني", name: "email" },
-    { placeholder: "أدخل رقمك السري", name: "password" },
+    { placeholder: "أدخل إسمك الكامل", name: "name", type: "text" },
+    { placeholder: "أدخل بريدك الإلكتروني", name: "email", type: "text" },
+    { placeholder: "أدخل رقمك السري", name: "password", type: "password" },
   ],
   btnText: "اشترك",
 };

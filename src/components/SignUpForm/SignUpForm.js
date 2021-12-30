@@ -1,12 +1,13 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
-import React, { useContext, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import "./SignUpForm.css";
 import axios from "axios";
 import { signUpFormDataEn } from "../../assets/data/dataEn";
 import { signUpFormDataAr } from "../../assets/data/dataAr";
 import SessionContext from "../../context/SessionContext";
+import ReCAPTCHA from "react-google-recaptcha";
 
 const SignUpForm = ({ toggle, closeModel }) => {
   const {
@@ -20,33 +21,45 @@ const SignUpForm = ({ toggle, closeModel }) => {
     btnText: btnTextAr,
   } = signUpFormDataAr;
 
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [body, setBody] = useState({});
   const [message, setMessage] = useState("");
+  let captcha = null;
+
+  const onChange = (e) => {
+    const { name, value } = e.target;
+    if (value) {
+      setBody((res) => {
+        return {
+          ...res,
+          [name]: value,
+        };
+      });
+    }
+  };
 
   const handleSubmit = async (e) => {
+    console.log({ recaptchaToken: captcha.getValue() });
+    console.log({ body });
     e.preventDefault();
     try {
-      const body = {
-        name,
-        email,
-        password,
-      };
       const response = await axios.post(
-        "https://fathomless-shelf-22509.herokuapp.com/api/admin/user-register",
+        "http://localhost:8000/api/admin/user-register",
         body,
         {
           headers: {
             "Content-type": "application/json",
             Accept: "application/json",
+            recaptchaToken: captcha.getValue(),
           },
         }
       );
       const data = response.data;
       setMessage(data.message);
+      captcha.reset();
     } catch (err) {
-      console.log({ error: err?.response?.data?.message });
+      console.log({ error: err?.response?.data });
+      console.log({ error2: err?.message });
+      captcha.reset();
     }
   };
 
@@ -74,8 +87,8 @@ const SignUpForm = ({ toggle, closeModel }) => {
                   <input
                     key={index}
                     className="text-align-end"
-                    type="text"
-                    onChange={(e) => setName(e.target.value)}
+                    type={res.type}
+                    onChange={onChange}
                     name={res.name}
                     placeholder={res.placeholder}
                   />
@@ -83,12 +96,19 @@ const SignUpForm = ({ toggle, closeModel }) => {
               : inputs.map((res, index) => (
                   <input
                     key={index}
-                    type="text"
-                    onChange={(e) => setName(e.target.value)}
+                    type={res.type}
+                    onChange={onChange}
                     name={res.name}
                     placeholder={res.placeholder}
                   />
                 ))}
+            <ReCAPTCHA
+              sitekey="6Le5xNwdAAAAADs9h-KhOOP6nS4CyCxPo6Uyyz6b"
+              // onChange={onChangeCaptcha}
+              ref={(el) => {
+                captcha = el;
+              }}
+            />
             <input type="submit" value={toggleLan ? btnTextAr : btnText} />
           </form>
           <div
