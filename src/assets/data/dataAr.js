@@ -255,3 +255,13 @@ export const contactDataAr = {
   ],
   btnText: "أرسل رسالة",
 };
+
+export const signUpFormDataAr = {
+  title: "اشترك",
+  inputs: [
+    { placeholder: "أدخل إسمك الكامل", name: "name" },
+    { placeholder: "أدخل بريدك الإلكتروني", name: "email" },
+    { placeholder: "أدخل رقمك السري", name: "password" },
+  ],
+  btnText: "اشترك",
+};

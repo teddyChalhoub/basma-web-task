@@ -265,3 +265,13 @@ export const contactDataEn = {
   ],
   btnText: "Send Message",
 };
+
+export const signUpFormDataEn = {
+  title: "Sign Up",
+  inputs: [
+    { placeholder: "Enter your full name", name: "name" },
+    { placeholder: "Enter your email", name: "email" },
+    { placeholder: "Enter your password", name: "password" },
+  ],
+  btnText: "Sign Up",
+};
