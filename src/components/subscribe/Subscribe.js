@@ -1,24 +1,39 @@
-import React from 'react';
+import React, { useContext } from "react";
 import "./Subscribe.css";
+import { subscribeDataEn } from "../../assets/data/dataEn";
+import { subscribeDataAr } from "../../assets/data/dataAr";
+import SessionContext from "../../context/SessionContext";
 
 const Subscribe = () => {
-    return (
-        <section className='subscribe-container'>
-            <div className='subscribe-info'>
-                <h1>Subscribe to get updates</h1>
-                <p> Lorem Ipsum has been the industry's standard 
-                    dummy text ever since the 1500s, when an unknown
-                     printer took a galley of type and scrambled it 
-                     to make a type specimen book.
-                </p>
-                <div className='subscribe-inputs'>
-                    <input type="text" name="fname" placeholder='enter your email'/>
-                    <input type="submit" value="Subscribe"/>
-                </div>
-            </div>
-           
-        </section>
-    )
-}
+  const {
+    state: { toggleLan },
+  } = useContext(SessionContext);
+  const { title, description, input, btnInputText } = subscribeDataEn;
+  const {
+    title: titleAr,
+    description: descriptionAr,
+    input: inputAr,
+    btnInputText: btnInputTextAr,
+  } = subscribeDataAr;
+  return (
+    <section className="subscribe-container">
+      <div className="subscribe-info">
+        <h1>{toggleLan ? titleAr : title}</h1>
+        <p>{toggleLan ? descriptionAr : description}</p>
+        <div className="subscribe-inputs">
+          <input
+            type="text"
+            name="email"
+            placeholder={toggleLan ? inputAr.placeholder : input.placeholder}
+          />
+          <input
+            type="submit"
+            value={toggleLan ? btnInputTextAr : btnInputText}
+          />
+        </div>
+      </div>
+    </section>
+  );
+};
 
-export default Subscribe
+export default Subscribe;

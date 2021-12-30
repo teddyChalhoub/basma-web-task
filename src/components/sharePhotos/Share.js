@@ -2,12 +2,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext } from "react";
 import { ShareImage } from "../../assets/images";
 import "./Share.css";
-import {
-  faLayerGroup,
-  faBrush,
-  faTint,
-  faShoppingCart,
-} from "@fortawesome/free-solid-svg-icons";
 import { sharePhotosEn } from "../../assets/data/dataEn";
 import { sharePhotosAr } from "../../assets/data/dataAr";
 import SessionContext from "../../context/SessionContext";

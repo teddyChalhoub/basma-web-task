@@ -1,31 +1,37 @@
-import React from 'react';
-import { AppStoreImage, GooglePlayImage } from '../../assets/images';
+import React, { useContext } from "react";
+import { AppStoreImage, GooglePlayImage } from "../../assets/images";
 import "./Devices.css";
+import { devicesDataEn } from "../../assets/data/dataEn";
+import { devicesDataAr } from "../../assets/data/dataAr";
+import SessionContext from "../../context/SessionContext";
 
 const Devices = () => {
-    return (
-       <section className='devices-container'>
-           <div className='devices-container-details'>
-                <h1>BASMA is available for all devices</h1>
-                <p> Lorem Ipsum has been the industry's standard dummy
-                    text ever since the 1500s, when an unknown printer 
-                    took a galley of type and scrambled it to make a type
-                    specimen book. It has survived not only five centuries,
-                    but also the leap into electronic typesetting, remaining 
-                    essentially unchanged.
-                </p>
-            </div>
-            <div className='devices-container-img'>
-                <div className='device-kind'>
-                    <img src={GooglePlayImage} />
-                </div>
-                <div className='device-kind'>
-                    <img src={AppStoreImage} />
-                </div>
-            </div>
-            <p>* Available on iPhone, iPad and all Android devices</p>
-       </section>
-    )
-}
+  const {
+    state: { toggleLan },
+  } = useContext(SessionContext);
 
-export default Devices
+  const { title, description, images, info } = devicesDataEn;
+  const {
+    title: titleAr,
+    description: descriptionAr,
+    info: infoAr,
+  } = devicesDataAr;
+  return (
+    <section className="devices-container">
+      <div className="devices-container-details">
+        <h1>{toggleLan ? titleAr : title}</h1>
+        <p>{toggleLan ? descriptionAr : description}</p>
+      </div>
+      <div className="devices-container-img">
+        {images.map((res, index) => (
+          <div key={index} className="device-kind">
+            <img src={res} />
+          </div>
+        ))}
+      </div>
+      <p>{toggleLan ? infoAr : info}</p>
+    </section>
+  );
+};
+
+export default Devices;

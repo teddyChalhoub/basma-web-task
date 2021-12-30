@@ -18,7 +18,6 @@ const Challenge = () => {
 
   return (
     <section className="code-challenge">
-      {console.log("code challenge", toggleLan)}
       <div className="code-challenge-title-info">
         <h1 className="code-challenge-title">{toggleLan ? titleAr : title}</h1>
         <p>{toggleLan ? descriptionAr : description}</p>
