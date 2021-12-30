@@ -1,48 +1,65 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
-import { ShareImage } from '../../assets/images';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useContext } from "react";
+import { ShareImage } from "../../assets/images";
 import "./Share.css";
-import { faLayerGroup,faBrush,faTint,faShoppingCart } from '@fortawesome/free-solid-svg-icons';
-
+import {
+  faLayerGroup,
+  faBrush,
+  faTint,
+  faShoppingCart,
+} from "@fortawesome/free-solid-svg-icons";
+import { sharePhotosEn } from "../../assets/data/dataEn";
+import { sharePhotosAr } from "../../assets/data/dataAr";
+import SessionContext from "../../context/SessionContext";
 
 const Share = () => {
-    return (
-      <section className='share_container'>
-          <div className='share'>
-                <div className='share-details'>
-                    <h1>Share your photos with friends easily</h1>
-                    <div className='share-details-info'>
-                        <div className='share-details-icon'>
-                            <FontAwesomeIcon icon={faLayerGroup}/>
-                        </div>
-                        <p> Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
-                    </div>
-                    <div className='share-details-info'>
-                        <div className='share-details-icon'>
-                            <FontAwesomeIcon icon={faBrush}/>
-                        </div>
-                        <p> Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
-                    </div>
-                    <div className='share-details-info'>
-                        <div className='share-details-icon'>
-                            <FontAwesomeIcon icon={faTint}/>
-                        </div>
-                        <p> Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
-                    </div>
-                    <div className='share-details-info'>
-                        <div className='share-details-icon'>
-                            <FontAwesomeIcon icon={faShoppingCart}/>
-                        </div>
-                        <p> Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
-                    </div>
-                    <a>Learn More</a>
+  const {
+    state: { toggleLan },
+  } = useContext(SessionContext);
+
+  const { title, content, btnText } = sharePhotosEn;
+  const {
+    title: titleAr,
+    content: contentAr,
+    btnText: btnTextAr,
+  } = sharePhotosAr;
+
+  return (
+    <section className="share_container">
+      <div className={toggleLan ? "share row-reverse-ar-style" : "share"}>
+        <div
+          className={
+            toggleLan ? "share-details text-align-end" : "share-details"
+          }
+        >
+          <h1 className={toggleLan ? "mg-L" : ""}>
+            {toggleLan ? titleAr : title}
+          </h1>
+          {toggleLan
+            ? contentAr.map((res) => (
+                <div className="share-details-info row-reverse-ar-style">
+                  <div className="share-details-icon">
+                    <FontAwesomeIcon icon={res.icon} />
+                  </div>
+                  <p>{res.description}</p>
                 </div>
-                <div className='share_img'>
-                        <img src={ShareImage}/>
+              ))
+            : content.map((res) => (
+                <div className="share-details-info">
+                  <div className="share-details-icon">
+                    <FontAwesomeIcon icon={res.icon} />
+                  </div>
+                  <p>{res.description}</p>
                 </div>
-          </div>
-      </section>
-    )
-}
+              ))}
+          <a>{toggleLan ? btnTextAr : btnText}</a>
+        </div>
+        <div className="share_img">
+          <img src={ShareImage} />
+        </div>
+      </div>
+    </section>
+  );
+};
 
 export default Share;

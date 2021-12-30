@@ -1,63 +1,51 @@
-import React from 'react';
+import React, { useContext } from "react";
 import "./Challenge.css";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHandPointer,faFingerprint,faMapMarkerAlt,faCogs,faGlobe } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import SessionContext from "../../context/SessionContext";
+import { codeChallengeDataEn } from "../../assets/data/dataEn";
+import { codeChallengeDataAr } from "../../assets/data/dataAr";
 
 const Challenge = () => {
-    return (
-        <section className='code-challenge'>
-            <div className='code-challenge-title-info'>
-                <h1 className='code-challenge-title'>Code Challenge</h1>
-                <p>Lorem Ipsum has been the industry's standard dummy 
-                    text ever since the 1500s,when an unknown printer took a galley of type.
-                </p>
-            </div>
-            <div  className='code-challenge-details'>
-                <div  className='code-challenge-details-info'>
-                    <div className='code-challenge-details-img'>                    
-                        <FontAwesomeIcon icon={faHandPointer} size='4x'/>
-                    </div>
-                    <h3>Fully functional</h3>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
-                </div>
-                <div  className='code-challenge-details-info'>
-                    <div className='code-challenge-details-img'>                    
-                        <FontAwesomeIcon icon={faFingerprint} size='4x'/>
-                    </div>
-                    <h3>Fully functional</h3>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
-                </div>
-                <div  className='code-challenge-details-info'>
-                    <div className='code-challenge-details-img'>                    
-                        <FontAwesomeIcon icon={faHandPointer} size='4x'/>
-                    </div>
-                    <h3>Fully functional</h3>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
-                </div>
-                <div  className='code-challenge-details-info'>
-                    <div className='code-challenge-details-img'>                    
-                        <FontAwesomeIcon icon={faMapMarkerAlt} size='4x'/>
-                    </div>
-                    <h3>Location Tracking</h3>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
-                </div>
-                <div  className='code-challenge-details-info'>
-                    <div className='code-challenge-details-img'>                    
-                        <FontAwesomeIcon icon={faCogs} size='4x'/>
-                    </div>
-                    <h3>Powerful Settings</h3>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
-                </div>
-                <div  className='code-challenge-details-info'>
-                <div className='code-challenge-details-img'>                    
-                        <FontAwesomeIcon icon={faGlobe} size='4x'/>
-                    </div>
-                    <h3>Multiple Language</h3>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
-                </div>
-            </div>
-        </section>
-    )
-}
+  const {
+    state: { toggleLan },
+  } = useContext(SessionContext);
+  const { title, description, content } = codeChallengeDataEn;
+  const {
+    title: titleAr,
+    description: descriptionAr,
+    content: contentAr,
+  } = codeChallengeDataAr;
 
-export default Challenge
+  return (
+    <section className="code-challenge">
+      {console.log("code challenge", toggleLan)}
+      <div className="code-challenge-title-info">
+        <h1 className="code-challenge-title">{toggleLan ? titleAr : title}</h1>
+        <p>{toggleLan ? descriptionAr : description}</p>
+      </div>
+      <div className="code-challenge-details">
+        {toggleLan
+          ? contentAr.map((res) => (
+              <div className="code-challenge-details-info">
+                <div className="code-challenge-details-img">
+                  <FontAwesomeIcon icon={res.iconName} size="4x" />
+                </div>
+                <h3>{res.title}</h3>
+                <p>{res.description}</p>
+              </div>
+            ))
+          : content.map((res) => (
+              <div className="code-challenge-details-info">
+                <div className="code-challenge-details-img">
+                  <FontAwesomeIcon icon={res.iconName} size="4x" />
+                </div>
+                <h3>{res.title}</h3>
+                <p>{res.description}</p>
+              </div>
+            ))}
+      </div>
+    </section>
+  );
+};
+
+export default Challenge;

@@ -1,128 +1,122 @@
-.share_container{
-    padding: 4rem 0;
+.share_container {
+  padding: 4rem 0;
 }
-.share{
-    width:80%;
-    margin: auto;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.share .share_img{
-    width:40%;
+.share {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.share .share_img img{
-    margin: 0 auto;
-    display: inherit;
+.share .share_img {
+  width: 40%;
 }
 
-.share .share-details{
-    margin:2rem 0;
-    width:40%;
+.share .share_img img {
+  margin: 0 auto;
+  display: inherit;
 }
 
-.share .share-details h1{
-    width:90%;
-    font-size: 2.5rem;
-    margin: 1rem 0;
+.share .share-details {
+  margin: 2rem 0;
+  width: 40%;
 }
 
-.share .share-details .share-details-info{
-    margin: 1rem 0;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
+.share .share-details h1 {
+  width: 90%;
+  font-size: 2.5rem;
+  margin: 1rem 0;
 }
 
-.share .share-details .share-details-info p{
+.share .share-details .share-details-info {
+  margin: 1rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.share .share-details .share-details-info p {
+  font-size: 0.75rem;
+  margin: 0 1rem;
+  width: 80%;
+}
+
+.share .share-details .share-details-info .share-details-icon {
+  font-size: 1.2rem;
+  background-color: #fff;
+  padding: 0.5rem 0.75rem;
+  width: 10%;
+  text-align: center;
+  border-radius: 2px;
+  color: #741ef7;
+  box-shadow: -5px 5px 8px #d8bdff;
+}
+
+.share .share-details a {
+  display: inline-block;
+  background-color: #741ef7;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  color: #fff;
+  border-radius: 5px;
+  margin-top: 1rem;
+}
+
+@media (max-width: 1048px) {
+  .share .share-details .share-details-info p {
+    width: 70%;
+  }
+
+  .share .share-details .share-details-info .share-details-icon {
+    width: 15%;
+  }
+}
+
+@media (max-width: 998px) {
+  .share {
     font-size: 0.75rem;
-    margin: 0 1rem;
-    width:80%;
+  }
+  .share .share-details h1 {
+    font-size: 1.75rem;
+  }
 }
 
-
-
-.share .share-details .share-details-info .share-details-icon{
-    font-size: 1.2rem;
-    background-color: #fff;
-    padding: 0.5rem 0.75rem;
-    width:10%;
-    text-align: center;
-    border-radius: 2px;
-    color:#741EF7 ;
-    box-shadow: -5px 5px 8px #d8bdff;
-}
-
-.share .share-details a{
-    display: inline-block;
-    background-color:#741EF7;
-    padding: 0.75rem 1.5rem;
-    text-decoration: none;
-    color:#fff;
-    border-radius: 5px;
-    margin-top: 1rem;
-}
-
-@media (max-width:1048px) {
-    .share .share-details .share-details-info p {
-        width: 70%;
-    }
-
-    .share .share-details .share-details-info .share-details-icon {
-
-        width: 15%;
-    }
-}
-
-@media (max-width:998px) {
-    .share{
-        font-size: 0.75rem;
-    }
-    .share .share-details h1 {
-        font-size: 1.75rem;
-    }
-}
-
-@media (max-width:954px) {
-
-    .share {
+@media (max-width: 954px) {
+  /* .share {
         flex-direction: row;
-    }
+    } */
 
-    .share .share_img {
-        align-self: center;
-        max-width: 20%;
-        margin: 2.5rem;
-    }
+  .share .share_img {
+    align-self: center;
+    max-width: 20%;
+    margin: 2.5rem;
+  }
 
-    .share .share_img img {
-        display: inherit;
-        width: 100%;
-    }
+  .share .share_img img {
+    display: inherit;
+    width: 100%;
+  }
 
-    .share .share-details {
-        min-width: 65%;
-    }
-    
+  .share .share-details {
+    min-width: 65%;
+  }
 }
 
-@media (max-width:706px) {
-    
-    .share {
-        flex-direction: column-reverse;
-    }
-    .share .share-details {
-        min-width: 100%;
-        text-align: center;
-    }
+@media (max-width: 706px) {
+  .share {
+    flex-direction: column-reverse;
+  }
+  .share .share-details {
+    min-width: 100%;
+    text-align: center;
+  }
 
-    .share .share-details .share-details-info p,    
-    .share .share-details .share-details-icons {
-        margin: auto;
-    }
-    .share .share-details .share-details-icons{
-        width:40%;
-    } 
+  .share .share-details .share-details-info p,
+  .share .share-details .share-details-icons {
+    margin: auto;
+  }
+  .share .share-details .share-details-icons {
+    width: 40%;
+  }
 }

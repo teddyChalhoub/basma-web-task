@@ -8,20 +8,23 @@ import Membership from './components/membership/Membership';
 import Share from './components/sharePhotos/Share';
 import Subscribe from './components/subscribe/Subscribe';
 import Tools from './components/tools/Tools';
+import SessionProvider from './context/SessionProvider';
 
 function App() {
   return (
-    <div className="App">
-      <Header/>
-      <Challenge/>
-      <Tools/>
-      <Share/>
-      <CodeChallenge2/>
-      <Membership/>
-      <Devices/>
-      <Subscribe/>
-      <Contact/>
-    </div>
+    <SessionProvider>
+      <div className="App">
+        <Header/>
+        <Challenge/>
+        <Tools/>
+        <Share/>
+        <CodeChallenge2/>
+        <Membership/>
+        <Devices/>
+        <Subscribe/>
+        <Contact/>
+      </div>
+    </SessionProvider>
   );
 }
 
