@@ -2,12 +2,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext } from "react";
 import { ToolsImage } from "../../assets/images";
 import "./Tools.css";
-// import {
-//   faCheck,
-//   faBell,
-//   faEnvelopeOpen,
-//   faVideo,
-// } from "@fortawesome/free-solid-svg-icons";
 import { toolsDataEn } from "../../assets/data/dataEn";
 import { toolsDataAr } from "../../assets/data/dataAr";
 import SessionContext from "../../context/SessionContext";
@@ -18,7 +12,7 @@ const Tools = () => {
   } = useContext(SessionContext);
 
   const { title, content, icons } = toolsDataEn;
-  const { title: titleAr, content: contentAr, icons: iconsAr } = toolsDataAr;
+  const { title: titleAr, content: contentAr } = toolsDataAr;
 
   return (
     <section className="tools_container">
@@ -33,14 +27,17 @@ const Tools = () => {
         >
           <h1>{toggleLan ? titleAr : title}</h1>
           {toggleLan
-            ? contentAr.map((res) => (
-                <div className="tools-details-info row-reverse-ar-style">
+            ? contentAr.map((res, index) => (
+                <div
+                  key={index}
+                  className="tools-details-info row-reverse-ar-style"
+                >
                   <FontAwesomeIcon icon={res.icon} color="#741EF7" />
                   <p>{res.description}</p>
                 </div>
               ))
-            : content.map((res) => (
-                <div className="tools-details-info">
+            : content.map((res, index) => (
+                <div key={index} className="tools-details-info">
                   <FontAwesomeIcon icon={res.icon} color="#741EF7" />
                   <p>{res.description}</p>
                 </div>
@@ -52,8 +49,8 @@ const Tools = () => {
                 : "tools-details-icons"
             }
           >
-            {icons.map((res) => (
-              <div className="tools-details-icon">
+            {icons.map((res, index) => (
+              <div key={index} className="tools-details-icon">
                 <FontAwesomeIcon icon={res} color="#741EF7" />
               </div>
             ))}

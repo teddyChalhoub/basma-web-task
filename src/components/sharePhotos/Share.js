@@ -30,16 +30,19 @@ const Share = () => {
             {toggleLan ? titleAr : title}
           </h1>
           {toggleLan
-            ? contentAr.map((res) => (
-                <div className="share-details-info row-reverse-ar-style">
+            ? contentAr.map((res, index) => (
+                <div
+                  key={index}
+                  className="share-details-info row-reverse-ar-style"
+                >
                   <div className="share-details-icon">
                     <FontAwesomeIcon icon={res.icon} />
                   </div>
                   <p>{res.description}</p>
                 </div>
               ))
-            : content.map((res) => (
-                <div className="share-details-info">
+            : content.map((res, index) => (
+                <div key={index} className="share-details-info">
                   <div className="share-details-icon">
                     <FontAwesomeIcon icon={res.icon} />
                   </div>

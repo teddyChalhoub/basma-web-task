@@ -55,6 +55,7 @@ const Contact = () => {
                   if (index === mailAr.length - 1) {
                     return (
                       <textarea
+                        key={index}
                         className="text-align-end"
                         rows="6"
                         cols="50"

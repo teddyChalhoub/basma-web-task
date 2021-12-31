@@ -27,13 +27,13 @@ const Header = () => {
       <nav id="nav_bar">
         <ul className={toggleLan ? "row-reverse-ar-style" : ""}>
           {toggleLan
-            ? navAr.map((res) => (
-                <li>
+            ? navAr.map((res, index) => (
+                <li key={index}>
                   <a href="#">{res}</a>
                 </li>
               ))
-            : nav.map((res) => (
-                <li>
+            : nav.map((res, index) => (
+                <li key={index}>
                   <a href="#">{res}</a>
                 </li>
               ))}
