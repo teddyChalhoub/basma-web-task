@@ -24,8 +24,8 @@ const Challenge = () => {
       </div>
       <div className="code-challenge-details">
         {toggleLan
-          ? contentAr.map((res) => (
-              <div className="code-challenge-details-info">
+          ? contentAr.map((res, index) => (
+              <div key={index} className="code-challenge-details-info">
                 <div className="code-challenge-details-img">
                   <FontAwesomeIcon icon={res.iconName} size="4x" />
                 </div>
@@ -33,8 +33,8 @@ const Challenge = () => {
                 <p>{res.description}</p>
               </div>
             ))
-          : content.map((res) => (
-              <div className="code-challenge-details-info">
+          : content.map((res, index) => (
+              <div key={index} className="code-challenge-details-info">
                 <div className="code-challenge-details-img">
                   <FontAwesomeIcon icon={res.iconName} size="4x" />
                 </div>

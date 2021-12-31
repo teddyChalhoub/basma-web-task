@@ -35,7 +35,7 @@ const CodeChallenge2 = () => {
           ? contentAr.map((res, index) => {
               if (index === contentAr.length - 1) {
                 return (
-                  <div className="code-challenge2-details-info">
+                  <div key={index} className="code-challenge2-details-info">
                     <div className="code-challenge2-details-img">
                       <img src={res.img} />
                     </div>
@@ -45,7 +45,7 @@ const CodeChallenge2 = () => {
                 );
               } else {
                 return (
-                  <div className="code-challenge2-details-info">
+                  <div key={index} className="code-challenge2-details-info">
                     <div className="code-challenge2-details-img">
                       <img src={res.img} />
                     </div>
@@ -61,7 +61,7 @@ const CodeChallenge2 = () => {
           : content.map((res, index) => {
               if (index === contentAr.length - 1) {
                 return (
-                  <div className="code-challenge2-details-info">
+                  <div key={index} className="code-challenge2-details-info">
                     <div className="code-challenge2-details-img">
                       <img src={res.img} />
                     </div>
@@ -71,7 +71,7 @@ const CodeChallenge2 = () => {
                 );
               } else {
                 return (
-                  <div className="code-challenge2-details-info">
+                  <div key={index} className="code-challenge2-details-info">
                     <div className="code-challenge2-details-img">
                       <img src={res.img} />
                     </div>

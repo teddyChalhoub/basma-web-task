@@ -1,0 +1,43 @@
+.contact-container .contact-info .contact-form-inputs .submit-icon .icon-ar {
+  display: inline-block;
+  position: absolute;
+  right: 45%;
+  color: #fff;
+  top: 25%;
+}
+
+@media (max-width: 1323px) {
+  .contact-container .contact-info .contact-form-inputs .submit-icon .icon-ar {
+    right: 42%;
+  }
+}
+
+@media (max-width: 1140px) {
+  .contact-container .contact-info .contact-form-inputs .submit-icon .icon-ar {
+    right: 40%;
+  }
+}
+
+@media (max-width: 998px) {
+  .contact-container .contact-info .contact-form-inputs .submit-icon .icon-ar {
+    right: 44%;
+  }
+}
+
+@media (max-width: 820px) {
+  .contact-container .contact-info .contact-form-inputs .submit-icon .icon-ar {
+    right: 42%;
+  }
+}
+
+@media (max-width: 700px) {
+  .contact-container .contact-info .contact-form-inputs .submit-icon .icon-ar {
+    right: 39%;
+  }
+}
+
+@media (max-width: 500px) {
+  .contact-container .contact-info .contact-form-inputs .submit-icon .icon-ar {
+    right: 30%;
+  }
+}

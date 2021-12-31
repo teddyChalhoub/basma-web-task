@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import React, { useContext } from "react";
 import "./Contact.css";
+import "./ContactAr.css";
 import { contactDataEn } from "../../assets/data/dataEn";
 import { contactDataAr } from "../../assets/data/dataAr";
 import SessionContext from "../../context/SessionContext";
@@ -54,6 +55,7 @@ const Contact = () => {
                   if (index === mailAr.length - 1) {
                     return (
                       <textarea
+                        key={index}
                         className="text-align-end"
                         rows="6"
                         cols="50"
@@ -83,7 +85,7 @@ const Contact = () => {
                   />
                 ))}
             <div className="submit-icon">
-              <span className="icon">
+              <span className={toggleLan ? "icon-ar" : "icon"}>
                 <FontAwesomeIcon icon={faPaperPlane} />
               </span>
               <input type="submit" value={toggleLan ? btnTextAr : btnText} />

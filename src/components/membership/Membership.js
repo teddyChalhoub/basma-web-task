@@ -1,5 +1,4 @@
 import React, { useContext, useState } from "react";
-import { BikeImage, MotorBikeImage } from "../../assets/images";
 import SignUpForm from "../SignUpForm/SignUpForm";
 import "./Membership.css";
 import { membershipDataEn } from "../../assets/data/dataEn";

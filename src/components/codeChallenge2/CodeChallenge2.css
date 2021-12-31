@@ -84,10 +84,6 @@
     font-size: 0.75rem;
   }
 
-  .to-left-ar {
-    right: 0 !important;
-  }
-
   .code-challenge2-title {
     font-size: 1.75rem;
   }
@@ -97,7 +93,9 @@
   .code-challenge2-container .code-challenge2-details {
     flex-direction: column;
   }
-
+  .to-left-ar {
+    right: 0 !important;
+  }
   .code-challenge2-container
     .code-challenge2-details
     .code-challenge2-details-info
