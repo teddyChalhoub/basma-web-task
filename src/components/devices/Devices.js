@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import { AppStoreImage, GooglePlayImage } from "../../assets/images";
 import "./Devices.css";
 import { devicesDataEn } from "../../assets/data/dataEn";
 import { devicesDataAr } from "../../assets/data/dataAr";

@@ -35,7 +35,12 @@ const NavbarBurgerMenu = ({ toggle, closeModel }) => {
                 ))}
           </ul>
         </div>
-        <div onClick={closeModel} className="burger-nav-close">
+        <div
+          onClick={closeModel}
+          className={
+            toggleLan ? "burger-nav-close to-left-ar" : "burger-nav-close"
+          }
+        >
           <FontAwesomeIcon icon={faTimes} />
         </div>
       </div>,
