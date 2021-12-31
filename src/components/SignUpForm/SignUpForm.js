@@ -22,8 +22,9 @@ const SignUpForm = ({ toggle, closeModel }) => {
   } = signUpFormDataAr;
 
   const [body, setBody] = useState({});
+  const [recaptchaToken, setRecaptchaToken] = useState("");
   const [message, setMessage] = useState("");
-  let captcha = null;
+  let captcha = useRef();
 
   const onChange = (e) => {
     const { name, value } = e.target;
@@ -37,10 +38,13 @@ const SignUpForm = ({ toggle, closeModel }) => {
     }
   };
 
+  const onChangeRecaptcha = (e) => {
+    setRecaptchaToken(e);
+  };
+
   const handleSubmit = async (e) => {
-    console.log({ recaptchaToken: captcha.getValue() });
-    console.log({ body });
     e.preventDefault();
+
     try {
       const response = await axios.post(
         "http://localhost:8000/api/admin/user-register",
@@ -49,17 +53,17 @@ const SignUpForm = ({ toggle, closeModel }) => {
           headers: {
             "Content-type": "application/json",
             Accept: "application/json",
-            recaptchaToken: captcha.getValue(),
+            recaptchaToken,
           },
         }
       );
       const data = response.data;
       setMessage(data.message);
-      captcha.reset();
+      captcha.current.reset();
     } catch (err) {
       console.log({ error: err?.response?.data });
       console.log({ error2: err?.message });
-      captcha.reset();
+      captcha.current.reset();
     }
   };
 
@@ -103,11 +107,9 @@ const SignUpForm = ({ toggle, closeModel }) => {
                   />
                 ))}
             <ReCAPTCHA
+              ref={captcha}
               sitekey="6Le5xNwdAAAAADs9h-KhOOP6nS4CyCxPo6Uyyz6b"
-              // onChange={onChangeCaptcha}
-              ref={(el) => {
-                captcha = el;
-              }}
+              onChange={onChangeRecaptcha}
             />
             <input type="submit" value={toggleLan ? btnTextAr : btnText} />
           </form>
