@@ -1,12 +1,13 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import "./SignUpForm.css";
 import { signUpFormDataEn } from "../../assets/data/dataEn";
 import { signUpFormDataAr } from "../../assets/data/dataAr";
 import SessionContext from "../../context/SessionContext";
 import ReCAPTCHA from "react-google-recaptcha";
+import { RECAPTCHA_SECRET_KEY } from "../../assets/secretKey";
 
 const SignUpForm = ({ toggle, closeModel }) => {
   const {
@@ -22,7 +23,6 @@ const SignUpForm = ({ toggle, closeModel }) => {
   } = signUpFormDataAr;
 
   const [body, setBody] = useState({});
-  const [recaptchaToken, setRecaptchaToken] = useState("");
 
   let captcha = useRef();
 
@@ -38,8 +38,10 @@ const SignUpForm = ({ toggle, closeModel }) => {
     }
   };
 
-  const onChangeRecaptcha = (e) => {
-    setRecaptchaToken(e);
+  const onChangeRecaptcha = async (e) => {
+    e.preventDefault();
+    const token = await captcha.current.executeAsync();
+    handleSubmit(e, body, token, captcha);
   };
 
   if (!toggle) {
@@ -52,10 +54,7 @@ const SignUpForm = ({ toggle, closeModel }) => {
           {message && (
             <p className="error-message text-align-center">{message}</p>
           )}
-          <form
-            method="post"
-            onSubmit={(e) => handleSubmit(e, body, recaptchaToken, captcha)}
-          >
+          <form method="post" onSubmit={(e) => onChangeRecaptcha(e)}>
             {toggleLan
               ? inputsAr.map((res, index) => (
                   <div className="input-group">
@@ -91,8 +90,8 @@ const SignUpForm = ({ toggle, closeModel }) => {
             <ReCAPTCHA
               ref={captcha}
               className="recaptcha-field"
-              sitekey="6Le5xNwdAAAAADs9h-KhOOP6nS4CyCxPo6Uyyz6b"
-              onChange={onChangeRecaptcha}
+              size="invisible"
+              sitekey={RECAPTCHA_SECRET_KEY}
             />
             <input type="submit" value={toggleLan ? btnTextAr : btnText} />
           </form>
