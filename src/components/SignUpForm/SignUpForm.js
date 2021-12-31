@@ -1,12 +1,12 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useCallback, useContext, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import "./SignUpForm.css";
 import { signUpFormDataEn } from "../../assets/data/dataEn";
 import { signUpFormDataAr } from "../../assets/data/dataAr";
 import SessionContext from "../../context/SessionContext";
-import ReCAPTCHA from "react-google-recaptcha";
+import { GoogleReCaptcha } from "react-google-recaptcha-v3";
 
 const SignUpForm = ({ toggle, closeModel }) => {
   const {
@@ -24,8 +24,6 @@ const SignUpForm = ({ toggle, closeModel }) => {
   const [body, setBody] = useState({});
   const [recaptchaToken, setRecaptchaToken] = useState("");
 
-  let captcha = useRef();
-
   const onChange = (e) => {
     const { name, value } = e.target;
     if (value) {
@@ -38,9 +36,9 @@ const SignUpForm = ({ toggle, closeModel }) => {
     }
   };
 
-  const onChangeRecaptcha = (e) => {
+  const onChangeRecaptcha = useCallback((e) => {
     setRecaptchaToken(e);
-  };
+  }, []);
 
   if (!toggle) {
     return null;
@@ -54,7 +52,7 @@ const SignUpForm = ({ toggle, closeModel }) => {
           )}
           <form
             method="post"
-            onSubmit={(e) => handleSubmit(e, body, recaptchaToken, captcha)}
+            onSubmit={(e) => handleSubmit(e, body, recaptchaToken)}
           >
             {toggleLan
               ? inputsAr.map((res, index) => (
@@ -88,12 +86,7 @@ const SignUpForm = ({ toggle, closeModel }) => {
                     )}
                   </div>
                 ))}
-            <ReCAPTCHA
-              ref={captcha}
-              className="recaptcha-field"
-              sitekey="6Le5xNwdAAAAADs9h-KhOOP6nS4CyCxPo6Uyyz6b"
-              onChange={onChangeRecaptcha}
-            />
+            <GoogleReCaptcha onVerify={onChangeRecaptcha} />
             <input type="submit" value={toggleLan ? btnTextAr : btnText} />
           </form>
           <div

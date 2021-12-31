@@ -20,7 +20,7 @@ const SessionProvider = ({ children }) => {
     setErrors(null);
   };
 
-  const handleSubmit = async (e, body, recaptchaToken, captcha) => {
+  const handleSubmit = async (e, body, recaptchaToken) => {
     e.preventDefault();
 
     try {
@@ -38,7 +38,6 @@ const SessionProvider = ({ children }) => {
       const data = response.data;
       setMessage(data.message);
       setErrors(null);
-      captcha.current.reset();
     } catch (err) {
       if (err?.response?.status === 401) {
         setMessage(err?.response?.data?.message);
@@ -47,10 +46,11 @@ const SessionProvider = ({ children }) => {
         setMessage("");
         setErrors(err?.response?.data?.errors);
       } else {
-        setMessage(err?.response?.data?.message);
+        setMessage(
+          "Please try again! Contact our support team if the issue is not resolved"
+        );
         setErrors(null);
       }
-      captcha.current.reset();
     }
   };
 
