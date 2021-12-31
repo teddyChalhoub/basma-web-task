@@ -25,7 +25,7 @@ const SessionProvider = ({ children }) => {
 
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/admin/user-register",
+        "https://fathomless-shelf-22509.herokuapp.com/api/user/user-register",
         body,
         {
           headers: {
@@ -47,7 +47,9 @@ const SessionProvider = ({ children }) => {
         setMessage("");
         setErrors(err?.response?.data?.errors);
       } else {
-        setMessage(err?.response?.data?.message);
+        setMessage(
+          "Please try again! Contact our support team if the issue is not resolved"
+        );
         setErrors(null);
       }
       captcha.current.reset();
