@@ -1,9 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import "./SignUpForm.css";
-import axios from "axios";
 import { signUpFormDataEn } from "../../assets/data/dataEn";
 import { signUpFormDataAr } from "../../assets/data/dataAr";
 import SessionContext from "../../context/SessionContext";
@@ -11,7 +10,8 @@ import ReCAPTCHA from "react-google-recaptcha";
 
 const SignUpForm = ({ toggle, closeModel }) => {
   const {
-    state: { toggleLan },
+    state: { toggleLan, errors, message },
+    actions: { handleSubmit, handleFormResetMessages },
   } = useContext(SessionContext);
 
   const { title, inputs, btnText } = signUpFormDataEn;
@@ -23,7 +23,7 @@ const SignUpForm = ({ toggle, closeModel }) => {
 
   const [body, setBody] = useState({});
   const [recaptchaToken, setRecaptchaToken] = useState("");
-  const [message, setMessage] = useState("");
+
   let captcha = useRef();
 
   const onChange = (e) => {
@@ -42,31 +42,6 @@ const SignUpForm = ({ toggle, closeModel }) => {
     setRecaptchaToken(e);
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    try {
-      const response = await axios.post(
-        "http://localhost:8000/api/admin/user-register",
-        body,
-        {
-          headers: {
-            "Content-type": "application/json",
-            Accept: "application/json",
-            recaptchaToken,
-          },
-        }
-      );
-      const data = response.data;
-      setMessage(data.message);
-      captcha.current.reset();
-    } catch (err) {
-      console.log({ error: err?.response?.data });
-      console.log({ error2: err?.message });
-      captcha.current.reset();
-    }
-  };
-
   if (!toggle) {
     return null;
   } else {
@@ -75,39 +50,47 @@ const SignUpForm = ({ toggle, closeModel }) => {
         <div className="signUp-form">
           <h1>{toggleLan ? titleAr : title}</h1>
           {message && (
-            <p
-              style={{
-                color: "red",
-                textAlign: "center",
-                marginBottom: "1rem",
-              }}
-            >
-              {message}
-            </p>
+            <p className="error-message text-align-center">{message}</p>
           )}
-          <form method="post" onSubmit={handleSubmit}>
+          <form
+            method="post"
+            onSubmit={(e) => handleSubmit(e, body, recaptchaToken, captcha)}
+          >
             {toggleLan
               ? inputsAr.map((res, index) => (
-                  <input
-                    key={index}
-                    className="text-align-end"
-                    type={res.type}
-                    onChange={onChange}
-                    name={res.name}
-                    placeholder={res.placeholder}
-                  />
+                  <div className="input-group">
+                    <input
+                      key={index}
+                      className="text-align-end"
+                      type={res.type}
+                      onChange={onChange}
+                      name={res.name}
+                      placeholder={res.placeholder}
+                    />
+                    {errors && (
+                      <p className="error-message text-align-end">
+                        {errors[res.name]}
+                      </p>
+                    )}
+                  </div>
                 ))
               : inputs.map((res, index) => (
-                  <input
-                    key={index}
-                    type={res.type}
-                    onChange={onChange}
-                    name={res.name}
-                    placeholder={res.placeholder}
-                  />
+                  <div className="input-group">
+                    <input
+                      key={index}
+                      type={res.type}
+                      onChange={onChange}
+                      name={res.name}
+                      placeholder={res.placeholder}
+                    />
+                    {errors && (
+                      <p className="error-message">{errors[res.name]}</p>
+                    )}
+                  </div>
                 ))}
             <ReCAPTCHA
               ref={captcha}
+              className="recaptcha-field"
               sitekey="6Le5xNwdAAAAADs9h-KhOOP6nS4CyCxPo6Uyyz6b"
               onChange={onChangeRecaptcha}
             />
@@ -116,7 +99,7 @@ const SignUpForm = ({ toggle, closeModel }) => {
           <div
             onClick={() => {
               closeModel();
-              setMessage("");
+              handleFormResetMessages();
             }}
             className="signUp-form-close"
           >

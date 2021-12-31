@@ -1,24 +1,73 @@
-import React, { useState } from 'react'
-import SessionContext from './SessionContext'
+import axios from "axios";
+import React, { useState } from "react";
+import SessionContext from "./SessionContext";
 
-const SessionProvider = ({children}) => {
+const SessionProvider = ({ children }) => {
+  const [toggleLan, setToggleLan] = useState(false);
+  const [errors, setErrors] = useState(null);
+  const [message, setMessage] = useState("");
 
-    const [toggleLan, setToggleLan] = useState(false);
+  const handleToggleEn = () => {
+    setToggleLan(false);
+  };
 
-    const handleToggleEn = ()=>{
-        setToggleLan(false);
+  const handleToggleAr = () => {
+    setToggleLan(true);
+  };
+
+  const handleFormResetMessages = () => {
+    setMessage("");
+    setErrors(null);
+  };
+
+  const handleSubmit = async (e, body, recaptchaToken, captcha) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post(
+        "http://localhost:8000/api/admin/user-register",
+        body,
+        {
+          headers: {
+            "Content-type": "application/json",
+            Accept: "application/json",
+            recaptchaToken,
+          },
+        }
+      );
+      const data = response.data;
+      setMessage(data.message);
+      setErrors(null);
+      captcha.current.reset();
+    } catch (err) {
+      if (err?.response?.status === 401) {
+        setMessage(err?.response?.data?.message);
+        setErrors(null);
+      } else if (err?.response?.status === 400) {
+        setMessage("");
+        setErrors(err?.response?.data?.errors);
+      } else {
+        setMessage(err?.response?.data?.message);
+        setErrors(null);
+      }
+      captcha.current.reset();
     }
+  };
 
-    const handleToggleAr= ()=>{
-        setToggleLan(true);
-    }
+  const context = {
+    state: { toggleLan, errors, message },
+    actions: {
+      handleToggleEn,
+      handleToggleAr,
+      handleSubmit,
+      handleFormResetMessages,
+    },
+  };
+  return (
+    <SessionContext.Provider value={context}>
+      {children}
+    </SessionContext.Provider>
+  );
+};
 
-    const context = {state:{toggleLan},actions:{handleToggleEn,handleToggleAr}}
-    return (
-        <SessionContext.Provider value={context}>
-            {children}
-        </SessionContext.Provider>
-    )
-}
-
-export default SessionProvider
+export default SessionProvider;
