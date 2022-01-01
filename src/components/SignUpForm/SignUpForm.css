@@ -5,6 +5,7 @@
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
 }
 
 .signUp-container .signUp-form {
@@ -67,26 +68,4 @@
   font-size: 0.7rem;
   margin: 0.3rem 0 1rem 0;
   align-self: flex-start;
-}
-
-.recaptcha-field {
-  margin-top: 0.5rem;
-}
-
-@media (max-width: 590px) {
-  .recaptcha-field {
-    transform: scale(0.9);
-  }
-}
-
-@media (max-width: 535px) {
-  .recaptcha-field {
-    transform: scale(0.7);
-  }
-}
-
-@media (max-width: 455px) {
-  .recaptcha-field {
-    transform: scale(0.6);
-  }
 }

@@ -47,7 +47,9 @@ const SessionProvider = ({ children }) => {
         setMessage("");
         setErrors(err?.response?.data?.errors);
       } else {
-        setMessage(err?.response?.data?.message);
+        setMessage(
+          "Please try again! Contact our support team if the issue is not resolved"
+        );
         setErrors(null);
       }
       captcha.current.reset();
