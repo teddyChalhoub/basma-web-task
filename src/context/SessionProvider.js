@@ -25,7 +25,7 @@ const SessionProvider = ({ children }) => {
 
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/admin/user-register",
+        "https://fathomless-shelf-22509.herokuapp.com/api/user/user-register",
         body,
         {
           headers: {
